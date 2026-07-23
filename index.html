@@ -715,39 +715,41 @@
             }
         }
 
-                // Updated window setup engine to automatically pull latest data from GitHub
+            // Updated window setup engine to ALWAYS pull the latest file from GitHub
         window.onload = function() {
             initTheme();
             
-            // Check if local storage already has data, if not, pull the default file from GitHub
-            if (localStorage.getItem(STORAGE_KEY)) {
-                familyData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-                buildDropdown();
-                renderTree();
-            } else {
-                // Fetch the backup file relative to your repository layout
-                fetch('family_tree_backup.json')
-                    .then(response => {
-                        if (!response.ok) throw new Error("No initial backup file found on GitHub yet.");
-                        return response.json();
-                    })
-                    .then(data => {
-                        familyData = data;
-                        saveAndRefresh(); // Saves it to their local memory for fluid browsing
-                    })
-                    .catch(err => {
-                        console.log(err.message);
-                        // Fallback to default grandfather layout if the file is missing or broken
-                        buildDropdown();
-                        renderTree();
-                    });
-            }
+            // Bypass localStorage and pull the fresh backup file directly from your GitHub repository
+            fetch('family_tree_backup.json?cache-bust=' + Date.now()) // Clears browser cache so it fetches fresh data
+                .then(response => {
+                    if (!response.ok) throw new Error("No initial backup file found on GitHub yet.");
+                    return response.json();
+                })
+                .then(data => {
+                    familyData = data;
+                    
+                    // Sync the fresh data to local storage so the drop-down selectors and edits work smoothly
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(familyData));
+                    
+                    buildDropdown();
+                    renderTree();
+                })
+                .catch(err => {
+                    console.log(err.message);
+                    // If the GitHub file is missing or encounters a network error, fall back to local memory
+                    if (localStorage.getItem(STORAGE_KEY)) {
+                        familyData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                    }
+                    buildDropdown();
+                    renderTree();
+                });
             
             // Check if they already unlocked it during this browser session
             if (sessionStorage.getItem('tree_unlocked') === 'true') {
                 document.getElementById('login-overlay').style.display = 'none';
             }
         };
+
 
 
     </script>
