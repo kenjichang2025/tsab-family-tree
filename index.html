@@ -657,17 +657,40 @@
             }
         }
 
-        // Updated window setup engine to handle gate checks
+                // Updated window setup engine to automatically pull latest data from GitHub
         window.onload = function() {
             initTheme();
-            buildDropdown();
-            renderTree();
+            
+            // Check if local storage already has data, if not, pull the default file from GitHub
+            if (localStorage.getItem(STORAGE_KEY)) {
+                familyData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                buildDropdown();
+                renderTree();
+            } else {
+                // Fetch the backup file relative to your repository layout
+                fetch('family_tree_backup.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error("No initial backup file found on GitHub yet.");
+                        return response.json();
+                    })
+                    .then(data => {
+                        familyData = data;
+                        saveAndRefresh(); // Saves it to their local memory for fluid browsing
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                        // Fallback to default grandfather layout if the file is missing or broken
+                        buildDropdown();
+                        renderTree();
+                    });
+            }
             
             // Check if they already unlocked it during this browser session
             if (sessionStorage.getItem('tree_unlocked') === 'true') {
                 document.getElementById('login-overlay').style.display = 'none';
             }
         };
+
 
     </script>
 </body>
