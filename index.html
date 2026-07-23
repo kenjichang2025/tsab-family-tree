@@ -7,53 +7,54 @@
     <style>
         /* CSS Root Variables for Quick Theme Switching */
         :root {
-            --bg-color: #e9ecef;
+            --bg-color: #f8f9fa;
             --panel-bg: #ffffff;
             --text-color: #333333;
             --title-color: #2b2b2b;
-            --border-color: #ced4da;
-            --line-color: #2b2b2b; /* Solid high-contrast line paths matching print layout */
+            --border-color: #e0e0e0;
+            --line-color: #adb5bd;
             --input-bg: #ffffff;
             --input-text: #333333;
             --input-border: #cccccc;
             
-            /* Print-accurate high-contrast generation theme borders and soft fills */
+            /* High Contrast Generation Node Themes (Light Mode) */
             --g1-border: #f76707; --g1-bg: #fff4e6; --g1-text: #d9480f;
-            --g2-border: #1c7ed6; --g2-bg: #e7f5ff; --g2-text: #1c7ed6;
-            --g3-border: #37b24d; --g3-bg: #ebfbee; --g3-text: #2b8a3e;
-            --g4-border: #ae3ec9; --g4-bg: #f3f0ff; --g4-text: #862e9c;
+            --g2-border: #228be6; --g2-bg: #e7f5ff; --g2-text: #1c7ed6;
+            --g3-border: #40c057; --g3-bg: #ebfbee; --g3-text: #2b8a3e;
+            --g4-border: #9c36b5; --g4-bg: #f3f0ff; --g4-text: #862e9c;
             --g5-border: #e64980; --g5-bg: #fff0f6; --g5-text: #c2255c;
             --g6-border: #fcc419; --g6-bg: #fff9db; --g6-text: #e67700;
             --g7-border: #15aabf; --g7-bg: #e2fbfd; --g7-text: #0b7285;
-            --g8-border: #1098ad; --g8-bg: #e2fbfd; --g8-text: #0c8599;
-            --g9-border: #4263eb; --g9-bg: #edf2ff; --g9-text: #3b5bdb;
+            --g8-border: #be4bdb; --g8-bg: #f8f0fc; --g8-text: #8f78d4;
+            --g9-border: #7048e8; --g9-bg: #edf2ff; --g9-text: #4c6ef5;
             --g10-border: #74b816; --g10-bg: #f4fce3; --g10-text: #5c940d;
             --grest-border: #495057; --grest-bg: #f1f3f5; --grest-text: #212529;
         }
 
-        /* Dark Mode Overrides Optimized for High Contrast Nodes */
+        /* Dark Mode CSS Variable Overrides */
         [data-theme="dark"] {
-            --bg-color: #121214;
-            --panel-bg: #1e1e24;
-            --text-color: #e4e5e7;
+            --bg-color: #1a1b1e;
+            --panel-bg: #25262b;
+            --text-color: #c1c2c5;
             --title-color: #ffffff;
-            --border-color: #2d3139;
-            --line-color: #a1a5b0;
-            --input-bg: #2a2d35;
+            --border-color: #373a40;
+            --line-color: #5c5f66;
+            --input-bg: #2c2e33;
             --input-text: #ffffff;
-            --input-border: #404550;
+            --input-border: #4d4f56;
 
-            --g1-border: #f76707; --g1-bg: #2b170c; --g1-text: #ff9248;
-            --g2-border: #228be6; --g2-bg: #0c1a2b; --g2-text: #74c0fc;
-            --g3-border: #40c057; --g3-bg: #0d2212; --g3-text: #69db7c;
-            --g4-border: #ae3ec9; --g4-bg: #240f2b; --g4-text: #da77f2;
-            --g5-border: #e64980; --g5-bg: #2b0c16; --g5-text: #faa2c1;
-            --g6-border: #fcc419; --g6-bg: #2b250c; --g6-text: #ffd43b;
-            --g7-border: #15aabf; --g7-bg: #0c2327; --g7-text: #66d9e8;
-            --g8-border: #1098ad; --g8-bg: #0b2126; --g8-text: #3bc9db;
-            --g9-border: #4263eb; --g9-bg: #11182b; --g9-text: #748ffc;
-            --g10-border: #74b816; --g10-bg: #17240c; --g10-text: #a9e34b;
-            --grest-border: #909296; --grest-bg: #2a2d35; --grest-text: #f1f3f5;
+            /* Dark Mode Optimized Node Themes */
+            --g1-border: #f76707; --g1-bg: #2c1a10; --g1-text: #ff9248;
+            --g2-border: #228be6; --g2-bg: #101f30; --g2-text: #74c0fc;
+            --g3-border: #40c057; --g3-bg: #112415; --g3-text: #69db7c;
+            --g4-border: #9c36b5; --g4-bg: #201329; --g4-text: #d0bfff;
+            --g5-border: #e64980; --g5-bg: #2c131a; --g5-text: #faa2c1;
+            --g6-border: #fcc419; --g6-bg: #2c2810; --g6-text: #ffd43b;
+            --g7-border: #15aabf; --g7-bg: #0f2326; --g7-text: #66d9e8;
+            --g8-border: #be4bdb; --g8-bg: #25132c; --g8-text: #eebefa;
+            --g9-border: #7048e8; --g9-bg: #16182c; --g9-text: #91a7ff;
+            --g10-border: #74b816; --g10-bg: #19240f; --g10-text: #a9e34b;
+            --grest-border: #909296; --grest-bg: #2c2e33; --grest-text: #e4e5e7;
         }
 
         body {
@@ -68,7 +69,7 @@
             transition: background-color 0.3s, color 0.3s;
             -webkit-tap-highlight-color: transparent;
             height: 100vh;
-            overflow: hidden;
+            overflow: hidden; /* Lock main viewport scroll to allow canvas manipulation */
             box-sizing: border-box;
         }
 
@@ -80,8 +81,12 @@
             z-index: 10;
         }
 
-        h1 { color: var(--title-color); margin: 0; font-size: 24px; }
+        h1 {
+            color: var(--title-color);
+            margin: 0;
+        }
 
+        /* Dark Mode Toggle Button */
         .theme-toggle {
             padding: 6px 12px;
             font-size: 13px;
@@ -93,26 +98,38 @@
             font-weight: 600;
         }
 
+        /* Generation Color Legend Guide */
         .legend-container {
             display: flex;
-            gap: 12px;
-            max-width: 950px;
+            gap: 15px;
+            max-width: 900px;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 15px;
             background: var(--panel-bg);
-            padding: 10px 15px;
+            padding: 12px 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             z-index: 10;
         }
 
-        .legend-item { display: flex; align-items: center; gap: 6px; }
-        .color-box { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
+        .color-box {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            border: 2px solid;
+        }
+
+        /* Control Panel Layout */
         .controls {
             background: var(--panel-bg);
             padding: 12px;
@@ -129,77 +146,102 @@
             z-index: 10;
         }
 
-        @media (min-width: 750px) {
-            .controls { flex-direction: row; max-width: 950px; flex-wrap: wrap; }
-            .controls input, .controls select, .controls button { width: auto; }
+        @media (min-width: 600px) {
+            .controls {
+                flex-direction: row;
+                max-width: 900px;
+                flex-wrap: wrap;
+            }
+            .controls input, .controls select, .controls button {
+                width: auto;
+            }
         }
 
-        input, select, button { padding: 8px 12px; font-size: 15px; border-radius: 4px; box-sizing: border-box; }
-        input, select, .theme-toggle { background-color: var(--input-bg); color: var(--input-text); border: 1px solid var(--input-border); }
-        button { background-color: #228be6; color: white; border: none; cursor: pointer; font-weight: bold; }
+        input, select, button {
+            padding: 8px 12px;
+            font-size: 16px !important;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input, select, .theme-toggle {
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            border: 1px solid var(--input-border);
+        }
+
+        button {
+            background-color: #228be6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
         button:hover { background-color: #1c7ed6; }
         .btn-danger { background-color: #fa5252; }
         .btn-danger:hover { background-color: #e03131; }
         .btn-secondary { background-color: #868e96; }
         .btn-secondary:hover { background-color: #495057; }
 
-        /* Infinite Zoom and Pan Stage Viewport Wrapper */
+        /* Infinite Zoom and Pan Wrapper Stage */
         .tree-container {
             position: relative;
             width: 100%;
             flex-grow: 1;
             overflow: hidden;
-            background: var(--panel-bg);
+            background: rgba(0,0,0,0.02);
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border: 1px dashed var(--border-color);
             cursor: grab;
             user-select: none;
         }
         .tree-container:active { cursor: grabbing; }
 
+        /* Smooth Hardware Accelerated Zoom Container Matrix Target */
         .zoom-canvas {
             position: absolute;
             top: 0;
             left: 0;
-            transform-origin: 0 0;
+            transform-origin: 0 0; /* Mathematical anchor point for perfect centering computations */
             will-change: transform;
-            padding: 200px;
+            padding: 100px; /* Expands spatial navigation room boundaries */
         }
 
-        /* Rebuilt 90-Degree Classic Flowchart Architecture */
         .tree, .tree ul, .tree li {
             position: relative;
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             list-style: none;
         }
 
         .tree ul {
             display: flex;
             justify-content: center;
-            padding-top: 40px; /* Space for the 90-degree lines to travel */
+            padding-top: 40px;
         }
 
         .tree li {
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            padding: 0 25px;
+            padding: 0 15px;
         }
 
-        /* Rebuilt Connector Lines: Dropping perfectly straight down out of the parent block center */
+        /* Connector Lines using CSS Pseudo-elements */
         .tree li::before, .tree li::after {
             content: '';
             position: absolute;
-            top: 0; right: 50%;
+            top: 0;
+            right: 50%;
             border-top: 2px solid var(--line-color);
-            width: 50%; height: 40px;
-            box-sizing: border-box;
+            width: 50%;
+            height: 40px;
         }
 
-        /* Dropping flat right-angles downward into child group headings */
         .tree li::after {
-            right: auto; left: 50%;
+            right: auto;
+            left: 50%;
             border-left: 2px solid var(--line-color);
         }
 
@@ -209,68 +251,74 @@
         
         .tree li:last-child::before {
             border-right: 2px solid var(--line-color);
+            border-radius: 0 5px 0 0;
         }
 
-        /* Top connecting stems hitting child arrays */
+        .tree li:first-child::after { border-radius: 5px 0 0 0; }
+
         .tree ul::before {
             content: '';
             position: absolute;
-            top: 0; left: 50%;
+            top: 0;
+            left: 50%;
             border-left: 2px solid var(--line-color);
-            width: 0; height: 40px;
+            width: 0;
+            height: 40px;
         }
 
-        /* Block-Style Family Stack Node Containers matching your image */
+        /* Profile Node Style Configs */
         .person-node {
             background: var(--panel-bg);
-            border: 2.5px solid var(--line-color);
-            padding: 8px 12px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            width: 140px;
+            border: 2px solid var(--line-color);
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            width: 120px;
             z-index: 2;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
         }
-
-        /* Single individual entry row item inside block list */
-        .member-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .member-row:last-child { border-bottom: none; }
 
         .node-name {
-            word-break: break-word;
-            text-align: left;
-            flex-grow: 1;
-            padding-right: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 13px;
+            line-height: 1.2;
         }
 
-        .row-actions {
+        .node-actions {
             display: flex;
-            gap: 2px;
-            opacity: 0.3;
-            transition: opacity 0.2s;
+            gap: 4px;
+            justify-content: center;
         }
-        .member-row:hover .row-actions { opacity: 1; }
 
-        .row-actions button {
-            padding: 2px 4px;
-            font-size: 10px !important;
+        .node-actions button {
+            padding: 4px 0;
+            width: 48px;
+            font-size: 11px !important;
             font-weight: bold;
-            border-radius: 2px;
-            width: auto;
         }
 
-        /* 10 Generations Print Color Variables Configuration */
+        .node-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--input-border);
+            margin: 0 auto 8px auto;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+                
+        .node-avatar-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--line-color);
+        }
+
+        /* 10 Generations Core Color Mapping Configuration Rules */
         .gen-1  { border-color: var(--g1-border)  !important; background-color: var(--g1-bg)  !important; color: var(--g1-text)  !important; }
         .gen-2  { border-color: var(--g2-border)  !important; background-color: var(--g2-bg)  !important; color: var(--g2-text)  !important; }
         .gen-3  { border-color: var(--g3-border)  !important; background-color: var(--g3-bg)  !important; color: var(--g3-text)  !important; }
@@ -283,7 +331,7 @@
         .gen-10 { border-color: var(--g10-border) !important; background-color: var(--g10-bg) !important; color: var(--g10-text) !important; }
         .gen-rest { border-color: var(--grest-border) !important; background-color: var(--grest-bg) !important; color: var(--grest-text) !important; }
 
-        /* Gateway Overlay */
+        /* Security Gate Screen Styles */
         #login-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -303,6 +351,7 @@
             text-align: center;
             width: 300px;
         }
+        .login-box h2 { margin-top: 0; color: var(--title-color); }
     </style>
 </head>
 <body>
@@ -338,13 +387,13 @@
 
     <!-- Action Tools Dashboard -->
     <div class="controls">
-        <input type="text" id="name" placeholder="Name (e.g., Suav Nchias)">
+        <input type="text" id="name" placeholder="Name (e.g., Jane Doe)">
         
         <select id="parent">
-            <option value="">No Parent (Root Family Block)</option>
+            <option value="">No Parent (Root Member)</option>
         </select>
 
-        <button onclick="addMember()">Add to Block</button>
+        <button onclick="addMember()">Add Relative</button>
         <button class="btn-secondary" onclick="exportJSON()">Backup Tree</button>
         <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Load Backup</button>
         <input type="file" id="import-file" style="display:none" onchange="importJSON(this)">
@@ -359,9 +408,9 @@
     </div>
 
     <script>
-        const STORAGE_KEY = 'offline_2d_family_tree_v6';
+        const STORAGE_KEY = 'offline_2d_family_tree_v5';
         const THEME_KEY = 'offline_family_tree_theme';
-        const ACCESS_PASSWORD = "Tsab2026"; 
+        const ACCESS_PASSWORD = "Tsab2026"; // Customize your gateway protection keyword here
         
         let familyData = [];
 
@@ -402,26 +451,11 @@
 
         function buildDropdown() {
             const select = document.getElementById('parent');
-            select.innerHTML = '<option value="">No Parent (Root Family Block)</option>';
-            
-            const blocks = {};
-            familyData.forEach(member => {
-                const bId = member.blockId || 'Root';
-                if (!blocks[bId]) blocks[bId] = [];
-                blocks[bId].push(member.name);
-            });
-
-            Object.keys(blocks).forEach(bId => {
-                const opt = document.createElement('option');
-                opt.value = bId;
-                opt.textContent = `Children of: [ ${blocks[bId].join(', ')} ]`;
-                if(bId !== 'Root') select.appendChild(opt);
-            });
-
+            select.innerHTML = '<option value="">No Parent (Root Member)</option>';
             familyData.forEach(member => {
                 const opt = document.createElement('option');
                 opt.value = member.id;
-                opt.textContent = `Branch off out of: ${member.name}`;
+                opt.textContent = member.name;
                 select.appendChild(opt);
             });
         }
@@ -433,36 +467,19 @@
                 alert("Please enter a name.");
                 return;
             }
-
-            const selection = parentSelect.value;
-            let blockId = null;
-
-            if (selection) {
-                const match = familyData.find(m => m.blockId === selection || m.id === selection);
-                if (match) {
-                    if (familyData.some(m => m.blockId === selection)) {
-                        blockId = selection;
-                    } else {
-                        blockId = match.id;
-                    }
-                }
-            } else {
-                blockId = 'Root';
-            }
-
             const newMember = {
                 id: Date.now().toString(),
                 name: nameInput.value.trim(),
-                blockId: blockId
+                parentId: parentSelect.value || null,
+                avatarUrl: null
             };
-
             familyData.push(newMember);
             nameInput.value = '';
             saveAndRefresh();
-            resetZoomAndCenter();
+            resetZoomAndCenter(); // Snap node additions back to screen center
         }
 
-        // --- 2. STRUCTURAL DATA MANAGEMENT ACTIONS ---
+        // --- 2. ADVANCED INTERACTIVE EDIT ACTIONS ---
         function editMember(id) {
             const member = familyData.find(m => m.id === id);
             if (!member) return;
@@ -474,12 +491,55 @@
                 return;
             }
             member.name = newName.trim();
-            saveAndRefresh();
+
+            if (confirm("Would you like to select or change this person's profile picture from your computer?")) {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.onchange = function(e) {
+                    const file = e.target.files;
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = new Image();
+                        img.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            const MAX_WIDTH = 150;
+                            const MAX_HEIGHT = 150;
+                            let width = img.width;
+                            let height = img.height;
+
+                            if (width > height) {
+                                if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+                            } else {
+                                if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
+                            }
+							canvas.width = width;
+                            canvas.height = height;
+                            ctx.drawImage(img, 0, 0, width, height);
+                            member.avatarUrl = canvas.toDataURL('image/jpeg', 0.7);
+                            saveAndRefresh();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                };
+                fileInput.click();
+            } else {
+                saveAndRefresh();
+            }
         }
 
         function deleteMember(id) {
-            if (confirm("Are you sure you want to remove this individual from the family block?")) {
+            const hasChildren = familyData.some(m => m.parentId === id);
+            let confirmMsg = "Are you sure you want to delete this person?";
+            if (hasChildren) confirmMsg = "Warning: Deleting this person will disconnect all of their descendants. Proceed?";
+
+            if (confirm(confirmMsg)) {
                 familyData = familyData.filter(m => m.id !== id);
+                familyData.forEach(m => { if (m.parentId === id) m.parentId = null; });
                 saveAndRefresh();
             }
         }
@@ -488,41 +548,27 @@
             return (level >= 1 && level <= 10) ? 'gen-' + level : 'gen-rest';
         }
 
-        function renderBlockStructure(blockId, currentLevel, blocksMap) {
-            const members = blocksMap[blockId] || [];
-            if (members.length === 0) return '';
-
-            const genClass = getGenerationClass(currentLevel);
+        function generateHTMLStructure(member, map, currentLevel) {
             let html = `<li>`;
+            const genClass = getGenerationClass(currentLevel);
+            let avatarHTML = member.avatarUrl ? `<div class="node-avatar" style="background-image: url('${member.avatarUrl}');"></div>` : `<div class="node-avatar node-avatar-empty">👤</div>`;
             
-            html += `<div class="person-node ${genClass}">`;
-            members.forEach(member => {
-                html += `
-                    <div class="member-row">
-                        <div class="node-name">${member.name}</div>
-                        <div class="row-actions">
-                            <button class="btn-secondary" onclick="editMember('${member.id}')">✏️</button>
-                            <button class="btn-danger" onclick="deleteMember('${member.id}')">❌</button>
-                        </div>
-                    </div>`;
-            });
-            html += `</div>`;
+            html += `
+                <div class="person-node ${genClass}">
+                    ${avatarHTML}
+                    <div class="node-name">${member.name}</div>
+                    <div class="node-actions">
+                        <button class="btn-secondary" onclick="editMember('${member.id}')">Edit</button>
+                        <button class="btn-danger" onclick="deleteMember('${member.id}')">Del</button>
+                    </div>
+                </div>`;
 
-            let childrenBlocks = [];
-            members.forEach(member => {
-                if (blocksMap[member.id]) {
-                    childrenBlocks.push(member.id);
-                }
-            });
-
-            if (childrenBlocks.length > 0) {
+            const children = map[member.id] || [];
+            if (children.length > 0) {
                 html += `<ul>`;
-                childrenBlocks.forEach(cBlockId => {
-                    html += renderBlockStructure(cBlockId, currentLevel + 1, blocksMap);
-                });
+                children.forEach(child => { html += generateHTMLStructure(child, map, currentLevel + 1); });
                 html += `</ul>`;
             }
-
             html += `</li>`;
             return html;
         }
@@ -530,19 +576,23 @@
         function renderTree() {
             const container = document.getElementById('tree-root');
             if (familyData.length === 0) {
-                container.innerHTML = "<p>No family blocks added yet.</p>";
+                container.innerHTML = "<p>No family members added yet.</p>";
                 return;
             }
 
-            const blocksMap = {};
+            const childMap = {};
+            const roots = [];
             familyData.forEach(member => {
-                const bId = member.blockId || 'Root';
-                if (!blocksMap[bId]) blocksMap[bId] = [];
-                blocksMap[bId].push(member);
+                if (member.parentId) {
+                    if (!childMap[member.parentId]) childMap[member.parentId] = [];
+                    childMap[member.parentId].push(member);
+                } else {
+                    roots.push(member);
+                }
             });
 
             let finalHTML = "<ul>";
-            finalHTML += renderBlockStructure('Root', 1, blocksMap);
+            roots.forEach(root => { finalHTML += generateHTMLStructure(root, childMap, 1); });
             finalHTML += "</ul>";
             container.innerHTML = finalHTML;
         }
@@ -551,19 +601,23 @@
         const viewport = document.getElementById('pan-viewport');
         const stage = document.getElementById('zoom-stage');
 
-        let scale = 0.8;
-        let panX = 100;
+        let scale = 0.6; // Initialize slightly zoomed out to showcase tree layout comfortably
+        let panX = 50;
         let panY = 50;
         let isPanning = false;
         let startX, startY;
 
         function updateTransformMatrix() {
+            // Apply fluid spatial movement transforms
             stage.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
         }
 
+        // Mouse Scroll Wheel Zoom Setup
         viewport.addEventListener('wheel', function(e) {
             e.preventDefault();
             const zoomSpeed = 0.05;
+            
+            // Capture cursor positions to allow zooming exactly into where the mouse points
             const rect = viewport.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
@@ -571,10 +625,11 @@
             const stageX = (mouseX - panX) / scale;
             const stageY = (mouseY - panY) / scale;
 
+            // Compute zoom directional thresholds
             if (e.deltaY < 0) {
-                scale = Math.min(scale + zoomSpeed, 2.0);
+                scale = Math.min(scale + zoomSpeed, 2.0); // Maximum 200% scaling magnification
             } else {
-                scale = Math.max(scale - zoomSpeed, 0.15);
+                scale = Math.max(scale - zoomSpeed, 0.15); // Minimum 15% macro zoom abstraction scaling
             }
 
             panX = mouseX - stageX * scale;
@@ -582,6 +637,7 @@
             updateTransformMatrix();
         }, { passive: false });
 
+        // Click-Drag Pan Controls
         viewport.addEventListener('mousedown', function(e) {
             if (e.target.closest('button') || e.target.closest('input') || e.target.closest('select')) return;
             isPanning = true;
@@ -596,8 +652,11 @@
             updateTransformMatrix();
         });
 
-        window.addEventListener('mouseup', function() { isPanning = false; });
+        window.addEventListener('mouseup', function() {
+            isPanning = false;
+        });
 
+        // Touch Interaction Support for Smartphones
         viewport.addEventListener('touchstart', function(e) {
             if (e.target.closest('button') || e.target.closest('input') || e.target.closest('select')) return;
             if (e.touches.length === 1) {
@@ -617,7 +676,7 @@
         viewport.addEventListener('touchend', function() { isPanning = false; });
 
         function resetZoomAndCenter() {
-            scale = 0.85;
+            scale = 0.75;
             const vWidth = viewport.clientWidth;
             const sWidth = stage.clientWidth || 800;
             panX = (vWidth / 2) - ((sWidth * scale) / 2);
@@ -649,7 +708,7 @@
                         setTimeout(resetZoomAndCenter, 150);
                     }
                 } catch (err) {
-                    alert("Invalid data format.");
+                    alert("Invalid backup data mapping layout.");
                 }
             };
             reader.readAsText(file);
@@ -693,5 +752,4 @@
     </script>
 </body>
 </html>
-
 
