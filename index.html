@@ -123,20 +123,6 @@
             border: 2px solid;
         }
 
-        /* Control Panel Layout */
-        .controls {
-            background: var(--panel-bg);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-            border: 1px solid var(--border-color);
-        }
-
         input, select, .theme-toggle {
             background-color: var(--input-bg);
             color: var(--input-text);
@@ -162,15 +148,7 @@
         .btn-danger:hover { background-color: #e03131; }
         .btn-secondary { background-color: #868e96; }
         .btn-secondary:hover { background-color: #495057; }
-
-        /* 2D Tree Flexbox Architecture */
-        .tree-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            overflow-x: auto;
-            padding: 20px 0;
-        }
+       
 
         .tree, .tree ul, .tree li {
             position: relative;
@@ -228,19 +206,6 @@
             border-left: 2px solid var(--line-color);
             width: 0;
             height: 20px;
-        }
-
-        /* Interactive Person Node Cards */
-        .person-node {
-            background: var(--panel-bg);
-            border: 2px solid var(--line-color);
-            padding: 12px 15px;
-            border-radius: 6px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            min-width: 140px;
-            z-index: 2;
-            position: relative;
         }
 
         .node-name {
@@ -318,6 +283,97 @@
             width: 300px;
         }
         .login-box h2 { margin-top: 0; color: var(--title-color); }
+
+        /* Unified Responsive App Overrides */
+        body {
+            padding: 10px; /* Thinner borders on mobile */
+            -webkit-tap-highlight-color: transparent; /* Clean touch feedback */
+        }
+
+        /* Responsive Top Controls Panel */
+        .controls {
+            background: var(--panel-bg);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 8px;
+            flex-direction: column; /* Stack controls vertically on phone */
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Desktop expansion rules for control dashboard row layouts */
+        @media (min-width: 600px) {
+            .controls {
+                flex-direction: row;
+                max-width: 900px;
+                flex-wrap: wrap;
+            }
+            .controls input, .controls select, .controls button {
+                flex: unset;
+                width: auto;
+            }
+        }
+
+        /* Large touch-friendly control elements */
+        input, select, button {
+            width: 100%; /* Fill screen width on mobile */
+            padding: 12px; /* Fat targets prevent misclicks */
+            font-size: 16px !important; /* Forces smartphones to NOT auto-zoom on form typing */
+            box-sizing: border-box;
+        }
+
+        /* Mobile Swipe / Pan Arena Container */
+        .tree-container {
+            display: flex;
+            justify-content: flex-start; /* Do not lock to center so you can pan left/right smoothly */
+            width: 100vw; /* Stretch full edge-to-edge screen size */
+            overflow-x: auto; /* Activates natural smartphone finger swiping */
+            overflow-y: auto;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            cursor: grab;
+            -webkit-overflow-scrolling: touch; /* Butter-smooth kinetic scrolling on iOS/Safari */
+        }
+        .tree-container:active { cursor: grabbing; }
+
+        /* Mobile Optimized Member Cards */
+        .person-node {
+            background: var(--panel-bg);
+            border: 2px solid var(--line-color);
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            width: 110px; /* Narrower width fits more branches side-by-side */
+            z-index: 2;
+            position: relative;
+        }
+
+        .node-name {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 13px; /* Slightly smaller text reads cleaner on phones */
+            line-height: 1.2;
+        }
+
+        .node-actions {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+        }
+
+        .node-actions button {
+            padding: 6px 0; /* Tall tap targets for thumbs */
+            width: 45px;
+            font-size: 11px !important;
+            font-weight: bold;
+        }
+
 
     </style>
 </head>
