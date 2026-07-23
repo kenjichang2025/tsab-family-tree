@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xeem Tsab Family Tree</title>
+    <style>
+        /* CSS Root Variables for Quick Theme Switching */
+        :root {
+            --bg-color: #f8f9fa;
+            --panel-bg: #ffffff;
+            --text-color: #333333;
+            --title-color: #2b2b2b;
+            --border-color: #e0e0e0;
+            --line-color: #adb5bd;
+            --input-bg: #ffffff;
+            --input-text: #333333;
+            --input-border: #cccccc;
+            
+            /* High Contrast Generation Node Themes (Light Mode) */
+            --g1-border: #f76707; --g1-bg: #fff4e6; --g1-text: #d9480f;
+            --g2-border: #228be6; --g2-bg: #e7f5ff; --g2-text: #1c7ed6;
+            --g3-border: #40c057; --g3-bg: #ebfbee; --g3-text: #2b8a3e;
+            --g4-border: #9c36b5; --g4-bg: #f3f0ff; --g4-text: #862e9c;
+            --g5-border: #e64980; --g5-bg: #fff0f6; --g5-text: #c2255c;
+            --g6-border: #fcc419; --g6-bg: #fff9db; --g6-text: #e67700;
+            --g7-border: #15aabf; --g7-bg: #e2fbfd; --g7-text: #0b7285;
+            --g8-border: #be4bdb; --g8-bg: #f8f0fc; --g8-text: #8f78d4;
+            --g9-border: #7048e8; --g9-bg: #edf2ff; --g9-text: #4c6ef5;
+            --g10-border: #74b816; --g10-bg: #f4fce3; --g10-text: #5c940d;
+            --grest-border: #495057; --grest-bg: #f1f3f5; --grest-text: #212529;
+        }
+
+        /* Dark Mode CSS Variable Overrides */
+        [data-theme="dark"] {
+            --bg-color: #1a1b1e;
+            --panel-bg: #25262b;
+            --text-color: #c1c2c5;
+            --title-color: #ffffff;
+            --border-color: #373a40;
+            --line-color: #5c5f66;
+            --input-bg: #2c2e33;
+            --input-text: #ffffff;
+            --input-border: #4d4f56;
+
+            /* Dark Mode Optimized Node Themes */
+            --g1-border: #f76707; --g1-bg: #2c1a10; --g1-text: #ff9248;
+            --g2-border: #228be6; --g2-bg: #101f30; --g2-text: #74c0fc;
+            --g3-border: #40c057; --g3-bg: #112415; --g3-text: #69db7c;
+            --g4-border: #9c36b5; --g4-bg: #201329; --g4-text: #d0bfff;
+            --g5-border: #e64980; --g5-bg: #2c131a; --g5-text: #faa2c1;
+            --g6-border: #fcc419; --g6-bg: #2c2810; --g6-text: #ffd43b;
+            --g7-border: #15aabf; --g7-bg: #0f2326; --g7-text: #66d9e8;
+            --g8-border: #be4bdb; --g8-bg: #25132c; --g8-text: #eebefa;
+            --g9-border: #7048e8; --g9-bg: #16182c; --g9-text: #91a7ff;
+            --g10-border: #74b816; --g10-bg: #19240f; --g10-text: #a9e34b;
+            --grest-border: #909296; --grest-bg: #2c2e33; --grest-text: #e4e5e7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--title-color);
+            margin: 0;
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            padding: 6px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            background-color: var(--panel-bg);
+            color: var(--text-color);
+            border: 1px solid var(--input-border);
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Generation Color Legend Guide */
+        .legend-container {
+            display: flex;
+            gap: 15px;
+            max-width: 900px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            background: var(--panel-bg);
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .color-box {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            border: 2px solid;
+        }
+
+        /* Control Panel Layout */
+        .controls {
+            background: var(--panel-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
+
+        input, select, .theme-toggle {
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            border: 1px solid var(--input-border);
+        }
+
+        input, select, button {
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #228be6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover { background-color: #1c7ed6; }
+        .btn-danger { background-color: #fa5252; }
+        .btn-danger:hover { background-color: #e03131; }
+        .btn-secondary { background-color: #868e96; }
+        .btn-secondary:hover { background-color: #495057; }
+
+        /* 2D Tree Flexbox Architecture */
+        .tree-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .tree, .tree ul, .tree li {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tree ul {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .tree li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        /* Connector Lines using CSS Pseudo-elements */
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 2px solid var(--line-color);
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 2px solid var(--line-color);
+        }
+
+        .tree li:only-child::after, .tree li:only-child::before { display: none; }
+        .tree li:only-child { padding-top: 0; }
+        .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+        
+        .tree li:last-child::before {
+            border-right: 2px solid var(--line-color);
+            border-radius: 0 5px 0 0;
+        }
+
+        .tree li:first-child::after { border-radius: 5px 0 0 0; }
+
+        .tree ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid var(--line-color);
+            width: 0;
+            height: 20px;
+        }
+
+        /* Interactive Person Node Cards */
+        .person-node {
+            background: var(--panel-bg);
+            border: 2px solid var(--line-color);
+            padding: 12px 15px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            min-width: 140px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .node-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+            word-break: break-word;
+        }
+
+        .node-actions {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .node-actions button {
+            padding: 3px 6px;
+            font-size: 11px;
+            font-weight: normal;
+            border-radius: 3px;
+        }
+
+        /* Profile Picture Styling */
+        .node-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: var(--input-border);
+            margin: 0 auto 8px auto;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+        
+        .node-avatar-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--line-color);
+        }
+
+                /* 10 Generations Custom Colors Assignments */
+        .gen-1  { border-color: var(--g1-border); background-color: var(--g1-bg); color: var(--g1-text); }
+        .gen-2  { border-color: var(--g2-border); background-color: var(--g2-bg); color: var(--g2-text); }
+        .gen-3  { border-color: var(--g3-border); background-color: var(--g3-bg); color: var(--g3-text); }
+        .gen-4  { border-color: var(--g4-border); background-color: var(--g4-bg); color: var(--g4-text); }
+        .gen-5  { border-color: var(--g5-border); background-color: var(--g5-bg); color: var(--g5-text); }
+        .gen-6  { border-color: var(--g6-border); background-color: var(--g6-bg); color: var(--g6-text); }
+        .gen-7  { border-color: var(--g7-border); background-color: var(--g7-bg); color: var(--g7-text); }
+        .gen-8  { border-color: var(--g8-border); background-color: var(--g8-bg); color: var(--g8-text); }
+        .gen-9  { border-color: var(--g9-border); background-color: var(--g9-bg); color: var(--g9-text); }
+        .gen-10 { border-color: var(--g10-border); background-color: var(--g10-bg); color: var(--g10-text); }
+        .gen-rest { border-color: var(--grest-border); background-color: var(--grest-bg); color: var(--grest-text); }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>Xeem Tsab Family Tree</h1>
+        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </div>
+
+    <!-- 10 Generation Color Legend Guide Display -->
+    <div class="legend-container">
+        <div class="legend-item"><div class="color-box gen-1"></div> Gen 1</div>
+        <div class="legend-item"><div class="color-box gen-2"></div> Gen 2</div>
+        <div class="legend-item"><div class="color-box gen-3"></div> Gen 3</div>
+        <div class="legend-item"><div class="color-box gen-4"></div> Gen 4</div>
+        <div class="legend-item"><div class="color-box gen-5"></div> Gen 5</div>
+        <div class="legend-item"><div class="color-box gen-6"></div> Gen 6</div>
+        <div class="legend-item"><div class="color-box gen-7"></div> Gen 7</div>
+        <div class="legend-item"><div class="color-box gen-8"></div> Gen 8</div>
+        <div class="legend-item"><div class="color-box gen-9"></div> Gen 9</div>
+        <div class="legend-item"><div class="color-box gen-10"></div> Gen 10</div>
+    </div>
+
+    <!-- Action Tools Dashboard -->
+    <div class="controls">
+        <input type="text" id="name" placeholder="Name (e.g., Jane Doe)">
+        
+        <select id="parent">
+            <option value="">No Parent (Root Member)</option>
+        </select>
+
+        <button onclick="addMember()">Add Relative</button>
+        <button class="btn-secondary" onclick="exportJSON()">Backup Tree</button>
+        <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Load Backup</button>
+        <input type="file" id="import-file" style="display:none" onchange="importJSON(this)">
+        <button class="btn-danger" onclick="resetTree()">Clear All</button>
+    </div>
+
+    <!-- Tree View Output Area -->
+    <div class="tree-container">
+        <div id="tree-root" class="tree"></div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'offline_2d_family_tree_v4';
+        const THEME_KEY = 'offline_family_tree_theme';
+        
+        // Initial setup database mapping
+        const defaultData = [
+            { id: "1", name: "Grandfather (Root)", parentId: null, avatarUrl: null },
+            { id: "2", name: "Parent A", parentId: "1", avatarUrl: null },
+            { id: "3", name: "Parent B", parentId: "1", avatarUrl: null },
+            { id: "4", name: "Child A1", parentId: "2", avatarUrl: null }
+        ];
+
+        let familyData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultData;
+
+        // Theme Engine Configuration Logic
+        function initTheme() {
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const btn = document.getElementById('theme-btn');
+            btn.textContent = savedTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem(THEME_KEY, newTheme);
+            
+            const btn = document.getElementById('theme-btn');
+            btn.textContent = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        // Save data layout properties and refresh components
+        function saveAndRefresh() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(familyData));
+            buildDropdown();
+            renderTree();
+        }
+
+        function buildDropdown() {
+            const select = document.getElementById('parent');
+            select.innerHTML = '<option value="">No Parent (Root Member)</option>';
+            familyData.forEach(member => {
+                const opt = document.createElement('option');
+                opt.value = member.id;
+                opt.textContent = member.name;
+                select.appendChild(opt);
+            });
+        }
+
+        function addMember() {
+            const nameInput = document.getElementById('name');
+            const parentSelect = document.getElementById('parent');
+
+            if (!nameInput.value.trim()) {
+                alert("Please enter a name.");
+                return;
+            }
+
+            const newMember = {
+                id: Date.now().toString(),
+                name: nameInput.value.trim(),
+                parentId: parentSelect.value || null,
+                avatarUrl: null
+            };
+
+            familyData.push(newMember);
+            nameInput.value = '';
+            saveAndRefresh();
+        }
+
+                // Fixed Edit Action with Automatic Local Image Compression
+        function editMember(id) {
+            const member = familyData.find(m => m.id === id);
+            if (!member) return;
+            
+            const newName = prompt("Edit Name:", member.name);
+            if (newName === null) return; // User clicked cancel
+            
+            if (newName.trim() === "") {
+                alert("Name cannot be empty.");
+                return;
+            }
+            member.name = newName.trim();
+
+            // Ask if the user wants to update the photo
+            if (confirm("Would you like to select or change this person's profile picture from your computer?")) {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                
+                fileInput.onchange = function(e) {
+                    const file = e.target.files[0]; // Fixed index capture
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = new Image();
+                        img.onload = function() {
+                            // Create an invisible canvas sandbox to shrink the photo
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            
+                            // Constrain max dimensions to an efficient 150px circle grid size
+                            const MAX_WIDTH = 150;
+                            const MAX_HEIGHT = 150;
+                            let width = img.width;
+                            let height = img.height;
+
+                            if (width > height) {
+                                if (width > MAX_WIDTH) {
+                                    height *= MAX_WIDTH / width;
+                                    width = MAX_WIDTH;
+                                }
+                            } else {
+                                if (height > MAX_HEIGHT) {
+                                    width *= MAX_HEIGHT / height;
+                                    height = MAX_HEIGHT;
+                                }
+                            }
+
+                            canvas.width = width;
+                            canvas.height = height;
+                            ctx.drawImage(img, 0, 0, width, height);
+                            
+                            // Compress down to low-weight JPEG data (Quality 0.7)
+                            member.avatarUrl = canvas.toDataURL('image/jpeg', 0.7);
+                            saveAndRefresh();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                };
+                
+                fileInput.click();
+            } else {
+                saveAndRefresh();
+            }
+        }
+
+
+        function deleteMember(id) {
+            const hasChildren = familyData.some(m => m.parentId === id);
+            
+            let confirmMsg = "Are you sure you want to delete this person?";
+            if (hasChildren) {
+                confirmMsg = "Warning: Deleting this person will also disconnect all of their descendants. Proceed?";
+            }
+
+            if (confirm(confirmMsg)) {
+                familyData = familyData.filter(m => m.id !== id);
+                familyData.forEach(m => {
+                    if (m.parentId === id) m.parentId = null;
+                });
+                saveAndRefresh();
+            }
+        }
+
+        // Assign style classes based on calculated depth layer (Up to 10)
+        function getGenerationClass(level) {
+            if (level >= 1 && level <= 10) {
+                return 'gen-' + level;
+            }
+            return 'gen-rest';
+        }
+
+        // Recursive structural renderer mapping depth calculations
+        function generateHTMLStructure(member, map, currentLevel) {
+            let html = `<li>`;
+            const genClass = getGenerationClass(currentLevel);
+            
+            let avatarHTML = '';
+            if (member.avatarUrl) {
+                avatarHTML = `<div class="node-avatar" style="background-image: url('${member.avatarUrl}');"></div>`;
+            } else {
+                avatarHTML = `<div class="node-avatar node-avatar-empty">👤</div>`;
+            }
+            
+            html += `
+                <div class="person-node ${genClass}">
+                    ${avatarHTML}
+                    <div class="node-name">${member.name}</div>
+                    <div class="node-actions">
+                        <button class="btn-secondary" onclick="editMember('${member.id}')">Edit</button>
+                        <button class="btn-danger" onclick="deleteMember('${member.id}')">Del</button>
+                    </div>
+                </div>`;
+
+            const children = map[member.id] || [];
+            if (children.length > 0) {
+                html += `<ul>`;
+                children.forEach(child => {
+                    html += generateHTMLStructure(child, map, currentLevel + 1);
+                });
+                html += `</ul>`;
+            }
+            html += `</li>`;
+            return html;
+        }
+
+                function renderTree() {
+            const container = document.getElementById('tree-root');
+            if (familyData.length === 0) {
+                container.innerHTML = "<p>No family members added yet.</p>";
+                return;
+            }
+
+            const childMap = {};
+            const roots = [];
+
+            familyData.forEach(member => {
+                if (member.parentId) {
+                    if (!childMap[member.parentId]) childMap[member.parentId] = [];
+                    childMap[member.parentId].push(member);
+                } else {
+                    roots.push(member);
+                }
+            });
+
+            let finalHTML = "<ul>";
+            roots.forEach(root => {
+                finalHTML += generateHTMLStructure(root, childMap, 1);
+            });
+            finalHTML += "</ul>";
+
+            container.innerHTML = finalHTML;
+        }
+
+        // Backup Management Tools with Download Notice
+        function exportJSON() {
+            const blob = new Blob([JSON.stringify(familyData, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "family_tree_backup.json";
+            a.click();
+            
+            // Pop up a clear reminder text alert immediately after the download triggers
+            alert("Check your web browser download directory for the Backup Tree file.");
+        }
+
+
+        function importJSON(input) {
+            const file = input.files;
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (Array.isArray(parsed)) {
+                        familyData = parsed;
+                        saveAndRefresh();
+                    }
+                } catch (err) {
+                    alert("Invalid backup data mapping layout.");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetTree() {
+            if (confirm("Permanently wipe your locally saved family tree data?")) {
+                familyData = [];
+                saveAndRefresh();
+            }
+        }
+
+        window.onload = function() {
+            initTheme();
+            buildDropdown();
+            renderTree();
+        };
+    </script>
+</body>
+</html>
+
+
