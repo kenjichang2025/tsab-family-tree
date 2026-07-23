@@ -726,7 +726,7 @@
                 renderTree();
             } else {
                 // Fetch the backup file relative to your repository layout
-                fetch('family_tree_backup.json')
+                fetch('https://github.com/kenjichang2025/tsab-family-tree/blob/main/family_tree_backup.json')
                     .then(response => {
                         if (!response.ok) throw new Error("No initial backup file found on GitHub yet.");
                         return response.json();
