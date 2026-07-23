@@ -295,9 +295,42 @@
         .gen-9  { border-color: var(--g9-border); background-color: var(--g9-bg); color: var(--g9-text); }
         .gen-10 { border-color: var(--g10-border); background-color: var(--g10-bg); color: var(--g10-text); }
         .gen-rest { border-color: var(--grest-border); background-color: var(--grest-bg); color: var(--grest-text); }
+
+        /* Password Screen Gateway Overlay */
+        #login-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: var(--bg-color);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+        .login-box {
+            background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            width: 300px;
+        }
+        .login-box h2 { margin-top: 0; color: var(--title-color); }
+
     </style>
 </head>
 <body>
+    <!-- Password Gateway Overlay Box -->
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>Tsab Family Tree Access</h2>
+            <p style="font-size: 13px; color: var(--text-color);">Enter password to unlock the family tree:</p>
+            <input type="password" id="password-input" placeholder="Password" style="margin-bottom: 15px; width: 100%;">
+            <button onclick="checkPassword()" style="width: 100%;">Unlock Tree</button>
+        </div>
+    </div>
 
     <div class="header-container">
         <h1>Xeem Tsab Family Tree</h1>
@@ -606,11 +639,36 @@
             }
         }
 
+                // Set your family's secret gateway password here
+        const ACCESS_PASSWORD = "Tsab2026";
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const overlay = document.getElementById('login-overlay');
+            
+            if (input === ACCESS_PASSWORD) {
+                // Hide the login block and grant view privileges
+                overlay.style.display = 'none';
+                // Save a temporary unlock marker so they don't re-type it on every click
+                sessionStorage.setItem('tree_unlocked', 'true');
+            } else {
+                alert("Incorrect password. Please try again.");
+                document.getElementById('password-input').value = '';
+            }
+        }
+
+        // Updated window setup engine to handle gate checks
         window.onload = function() {
             initTheme();
             buildDropdown();
             renderTree();
+            
+            // Check if they already unlocked it during this browser session
+            if (sessionStorage.getItem('tree_unlocked') === 'true') {
+                document.getElementById('login-overlay').style.display = 'none';
+            }
         };
+
     </script>
 </body>
 </html>
